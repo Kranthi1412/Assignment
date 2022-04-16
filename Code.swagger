@@ -1,0 +1,72 @@
+swagger: "2.0"
+info:
+  description: "This is a draft API for Coffee"
+  version: "0.0.1"
+  title: "Coffee"
+host: "hostname"
+basePath: "/shop/v1"
+schemes:
+- "http"
+paths:
+    get:
+      tags:
+      - "coffee"
+      summary: "Establish the Connection Setup Request To user."
+      operationId: "1234"
+      parameters: []
+      responses:
+        200:
+          description: "Coffee is Successfully Connected To user."
+          schema:
+            type: string
+            description: "Response Status"
+        503:
+          description: "Coffee server is Failed to Connect To Configured user."
+  /ready/software_update:
+    post:
+      tags:
+      - "coffee"
+      summary: "Get the ready request for user."
+      operationId: "1"
+      consumes:
+      - "multipart/form-data"
+      parameters:
+      - name: bru coffee
+        in: formData
+        required: true
+        type: string
+        description: "nice coffee"
+      - name: filter coffee
+        in: formData
+        required: true
+        type: string
+        description: "nice coffee"
+        default: "good"
+      - name: green tea
+        in: formData
+        required: true
+        type: string
+        description: "nice tea"
+        default: "good"
+      - name: checkSum
+        in: formData
+        required: true
+        type: string
+      - name: lemon tea
+        in: formData
+        required: true
+        type: string
+        description: "Response status."
+      - name: black tea
+        in: formData
+        required: true
+        type: file
+        description: Response status.
+        x-mimetype: application/zip
+      responses:
+        200:
+          description: "nice tea"
+        500:
+          description: "Internal error"
+        400:
+          description: "nice tea"
