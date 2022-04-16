@@ -1,0 +1,81 @@
+Deployment.yaml: Coffee shop
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coffeeshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coffeeshop
+  template:
+    metadata:
+      labels:
+        app: coffeeshop
+    spec:
+      containers:
+      - name: coffeeshop
+        image: katacoda/docker-http-server:latest
+        ports:
+        - containerPort: 80
+ 
+Deployment.yaml: mongodb
+ 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: katacoda/docker-http-server:latest
+        ports:
+        - containerPort: 80
+
+
+service.yaml: Coffee shop
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: coffeeshop-svc
+  labels:
+    app: coffeeshop
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30080
+  selector:
+    app: coffeeshop
+	
+service.yaml: mongodb
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-svc
+  labels:
+    app: mongodb
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30080
+  selector:
+    app: mongodb
+
+
+
